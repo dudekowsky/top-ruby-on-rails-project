@@ -1,8 +1,11 @@
 <% @tags.each do |tag| %>
   <p>
     <%= link_to "#{tag.name} (#{tag.articles.count})", tag_path(tag)%> |
+    <% if logged_in? %>
     <%= link_to "Delete Tag", tag_path(tag), method: :delete, data: {
                               confirm: "Are you sure?"
       } %>
+    <% end %>
+
   </p>
 <% end %>
