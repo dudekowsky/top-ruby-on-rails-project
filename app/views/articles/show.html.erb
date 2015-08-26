@@ -1,6 +1,13 @@
 <h1> <%= @article.title %> </h1>
 <p> <%= @article.body %> </p>
+<p>
+  Tags:
+  <% @article.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
 <h3><%= pluralize(@article.comments.count, "Comment")%>: </h3>
+
 <%= render partial: "articles/comment", collection: @article.comments %>
 <%= render partial: 'comments/form' %>
 <%= link_to "Back to all articles", articles_path %> |
