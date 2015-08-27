@@ -1,14 +1,23 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
-  before_action :require_login, except: [:index, :show ]
+  before_action :require_login, except: [:index, :show, :pop, :dateindex]
   def index
     @articles = Article.all
+  end
+  def pop
+    @articles = Article.order(view_count: :desc).first(3)
+  end
+  def dateindex
+    @articles = Article.order(:created_at)
+    @articles_month = @articles.group_by {
+        |art| art.created_at.beginning_of_month }
   end
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
-
+    @article.increase_view_count
+    @article.save
   end
   def new
     @article = Article.new

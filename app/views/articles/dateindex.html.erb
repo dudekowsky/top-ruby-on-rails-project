@@ -1,0 +1,9 @@
+<% @articles_month.sort.each do |month, articles| %>
+  <h2><%= month.strftime('%B') %></h2>
+  <% for article in articles %>
+    <div class="article">
+      <strong><%= article.title %></strong>
+      created at <%= article.created_at.to_date.to_s(:long) %>
+    </div>
+  <% end %>
+<% end %>

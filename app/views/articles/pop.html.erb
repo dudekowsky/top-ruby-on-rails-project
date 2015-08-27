@@ -1,0 +1,8 @@
+<h1>Die beliebtesten Artikel</h1>
+<% @articles.each do |art| %>
+  <h3><%= link_to art.title, article_path(art)%></h3>
+  <p>
+    <%= art.body%>
+  </p>
+
+<% end %>

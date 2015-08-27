@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root "articles#index"
+  get 'popular' => 'articles#pop'
+  get 'dateindex' => 'articles#dateindex'
 
   resources :articles do
     resources :comments

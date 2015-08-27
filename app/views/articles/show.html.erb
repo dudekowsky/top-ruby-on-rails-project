@@ -4,6 +4,10 @@
 <p><%= image_tag @article.image.url %></p>
 <% end %>
 <p>
+  View Count:
+  <%= @article.view_count %>
+</p>
+<p>
   Tags:
   <% @article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
